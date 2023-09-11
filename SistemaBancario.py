@@ -1,8 +1,16 @@
+class Usuario:
+    def __init__(self, nome, data_nascimneto, cpf , endereco):
+        self.nome = nome
+        self.data_nascimneto = data_nascimneto
+        self.cpf = cpf
+        self.endereco = endereco
+
 class ContaBancaria:
-    def __init__(self):
+    def __init__(self,cliente):
         self.saldo = 0
         self.transacoes = []
         self.saques_realizados = 0
+        self.cliente = cliente
 
     
     def depositar(self,valor):
@@ -30,13 +38,44 @@ class ContaBancaria:
     def extrato (self):
         return self.transacoes
     
+# Lista de clientes
+clientes = []
 
-#Criar conta par Usuário
-conta_usuario = ContaBancaria()
+def cadastrar_usuario():
+    nome = input("Digite o nome do cliente: ")
+    data_nascimento = input("Digite a data de nascimento (dd/mm/aaaa): ")
+    cpf = input("Digite o CPF: ")
+    endereco = input("Digite o endereço (logradouro, nro - bairro - cidade/sigla estado): ")
+
+    # Verificar se o CPF já está cadastrado
+    cpf_existente = any(cliente.cpf == cpf for cliente in clientes)
+    if cpf_existente:
+        print("CPF já cadastrado. Não é possível cadastrar o mesmo CPF novamente.")
+        return
+
+    usuario = Usuario(nome, data_nascimento, cpf, endereco)
+    clientes.append(usuario)
+    print("Usuário cadastrado com sucesso!")
+
+def criar_conta_corrente():
+    cpf = input("Digite o CPF do cliente: ")
+    
+    # Verificar se o CPF existe na lista de clientes
+    for cliente in clientes:
+        if cliente.cpf == cpf:
+            conta = ContaBancaria(cliente)
+            print("Conta corrente criada com sucesso!")
+            return
+    
+    print("CPF não encontrado. Certifique-se de cadastrar o cliente primeiro.")
+
+
+conta_usuario = ContaBancaria(clientes)
 
 #Função para exibir o menu e lidar comm as operações
 
 def menu_usuario():
+    
     print("1 - Despositar")
     print("2 - Sacar")
     print("3 - Exibir Extrato")
