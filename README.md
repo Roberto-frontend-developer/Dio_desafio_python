@@ -9,8 +9,10 @@ Breve descrição do projeto. Este é um exemplo de como criar um arquivo README
 
 Liste aqui qualquer software, ferramenta ou recurso necessário para executar o projeto.
 
-- Python 3.x
-- Biblioteca XYZ
+- Python 3
+- Biblioteca abc
+- abstractmethod
+- datetime
 
 ## Instalação
 
