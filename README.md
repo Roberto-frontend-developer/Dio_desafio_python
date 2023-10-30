@@ -36,18 +36,8 @@ Se o seu projeto for um script Python, você pode fornecer instruções sobre co
 
 Se o seu projeto for um servidor web, você pode explicar como configurá-lo e executá-lo.
 
-1. Instale as dependências do projeto: `npm install`
+1. Instale as dependências do projeto: `pip install`
 2. Configure as variáveis de ambiente necessárias.
-3. Inicie o servidor: `npm start`
+3. Inicie o servidor: `python manage.py runserver`
 
-### Exemplo 3: Uso de uma Biblioteca
 
-Se o seu projeto for uma biblioteca ou módulo, explique como usá-lo em outros projetos.
-
-```python
-# Importe a biblioteca no seu código
-from minha_biblioteca import funcao
-
-# Use a função
-resultado = funcao(argumento)
-print(resultado)
